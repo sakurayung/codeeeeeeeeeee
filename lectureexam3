@@ -1,0 +1,144 @@
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+public class Test2 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		boolean loop = true;
+		System.out.println("*****JAVA*****");
+		int proceed;
+		int number = 0;
+		String ab = "";
+		
+		
+		do {
+			System.out.println("ENTER 1 TO PROCEED:");
+			proceed = input.nextInt();
+			if (proceed > 1) {
+				System.out.println("ERROR!");
+				System.exit(proceed);
+			}
+			
+			int selection;
+			System.out.println("MAIN MENU SELECTION:\n[1]FORMULA FOR PARALLELOGRAM\n[2]LOOP\n[3]ARRAY");
+			selection = input.nextInt();
+			
+			System.out.println();
+			switch (selection) {
+			case 1:
+				//PARALLELOGRAM LOOP
+			double area, base, height;	
+			int selection1;
+			
+			System.out.println("FOR CASE 1:\n[1]SOLVE AREA\n[2]SOLVE HEIGHT\n[3]SOLVE BASE");
+			selection1 = input.nextInt();
+			
+			if (selection1 == 1) {
+				System.out.println("ENTER HEIGHT OF PARALLELOGRAM: ");
+				height = input.nextDouble();
+				System.out.println("ENTER BASE OF PARALLELOGRAM: ");
+				base = input.nextDouble();
+				area = (base * height);
+				System.out.println("AREA OF PALLELOGRAM IS: "+area);
+				
+			} if (selection1 == 2) {
+				System.out.println("ENTER AREA OF PARALLELOGRAM: ");
+				area = input.nextDouble();
+				System.out.println("ENTER BASE OF PARALLELOGRAM: ");
+				base = input.nextDouble();
+				height = area / base;
+				System.out.println("HEIGHT OF PARALLELOGRAM IS: "+height);
+				
+			} if (selection1 == 3) {
+				System.out.println("ENTER AREA OF PARALLELOGRAM: ");
+				area = input.nextDouble();
+				System.out.println("ENTER HEIGHT OF PARALLELOGRAM: ");
+				height = input.nextDouble();
+				base = area / height;
+				System.out.println("BASE OF PARALLELOGRAM: "+base);
+				break;
+			} 
+			//STARS LOOP
+			case 2:
+				
+			    boolean loop1 = true, loop2 = true;;
+				char yes = 'Y';
+				char condition;
+				int x, y;
+				int stars;
+				while (loop2) {
+				System.out.println("ENTER VALUE OF STAR: ");
+				stars = input.nextInt();
+				if (stars < 0) {
+					System.out.println("ERROR!");
+					System.exit(0);
+				}
+				
+				for (x = stars - 1; x >= 0; x--) {
+					for (y = 0; y <= x; y++) {
+						if (x % 2 == 0) {
+							System.out.print("*");
+						}
+					}
+					if (x % 2 == 0) {
+						System.out.println();
+					}
+				}
+				for (x = 0; x < stars; x++) {
+				for	(y = 0; y <= x; y++) {
+						System.out.print("*");
+					}
+				System.out.println("");
+				} 
+		        System.out.println("Do you want to continue?[Y/N]: ");
+		        condition = input.next().charAt(0); 	
+		        switch (condition) {
+		        case 'Y':
+		        	break;
+		        case 'N':	
+		        	System.out.println("END!");
+		        	System.exit(0);
+		        	loop2 = false;
+		        	loop1 = false;
+		        	break;
+		        	//ARRAY
+		        
+		        	
+		        	
+		        	
+		        }
+			} 
+			case 3:
+	        	System.out.println("[ARRAY]");
+	        	System.out.println("Enter array value: ");
+	        	boolean op = true;
+	        	int number2;
+	        	int negative;
+	        	while(op) {
+	        		if(input.hasNextInt()) {
+	    	      		number = input.nextInt();
+
+	    	      		String arr=String.valueOf(number);
+	    	      		ab=ab+arr+" ";
+	    	      		if (number < 0) {
+	    	      			System.out.println("ERROR!");
+	    	      			System.out.println("THANK YOU FOR USING!");
+	    	      			System.exit(0);
+	    	      		} 
+	    	      		}else{op=false;}
+	    	      		
+	        	}
+	        	String [] alt = ab.split(" ");
+	        	System.out.println(Arrays.toString(alt));
+	        	 loop = false;
+		         break;        	
+		         default:
+			} 
+		} while(loop);
+		System.out.println("Thank you for using!");
+
+	}
+
+}
