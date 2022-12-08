@@ -1,0 +1,147 @@
+package gui;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class LectureExam {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("****JAVA****");
+
+		//FIRST PROCEED
+		int proceed = 1;
+		System.out.println("ENTER 1 TO PROCEED: ");
+		proceed = input.nextInt();
+		if (proceed < 1) {
+			System.out.println("ERROR!!!");
+			System.exit(0);
+		}
+		int answer = 0;
+		System.out.println("MAIN MENU SELECTION: ");
+		System.out.println("[1]FORMULA FOR PALLELOGRAM\n[2]LOOP\n[3]ARRAY");
+		answer = input.nextInt();
+		if (answer > 3) {
+			System.out.println("ERROR!!!");
+			System.exit(0);
+		}
+		//CASE 1
+		int proceed2 = 0;
+		switch (answer) {
+		case 1:
+			double base;
+			double height;
+			double area;
+			
+			System.out.println("FOR CASE 1:\n[1]SOLVE AREA\n[2]SOLVE HEIGHT\n[3]SOLVE BASE");
+			proceed2 = input.nextInt();
+			
+			//IF-LOOP
+			if (proceed2 == 1) {
+				System.out.println("AREA OF PARALLELOGRAM");
+				
+				System.out.println("ENTER HEIGHT OF PARALLELOGRAM: ");
+				height = input.nextInt();
+				System.out.println("ENTER BASE OF PARALLELOGRAM: ");
+				base = input.nextInt();
+				area = (base*height);
+				System.out.println("AREA OF PALLELOGRAM IS: "+area);
+			}  if (proceed2 == 2) {
+				System.out.println("HEIGHT OF PARALLELOGRAM");
+				
+				System.out.println("ENTER AREA OF PARALLELOGRAM: ");
+				area = input.nextInt();
+				System.out.println("ENTER BASE OF PARALLELOGRAM: ");
+				base = input.nextInt();
+				height = (area/base);
+				System.out.println("HEIGHT OF PARALLELOGRAM IS: "+height);
+				
+			} if (proceed2 == 3) {
+				System.out.println("BASE OF PARALLELOGRAM");
+				
+				System.out.println("ENTER AREA OF PARALLELOGRAM: ");
+				area = input.nextInt();
+				System.out.println("ENTER HEIGHTT OF PARALLELOGRAM: ");
+				height = input.nextInt();
+				base = (area/height);
+				System.out.println("BASE OF PARALLELOGRAM: "+base);
+				
+			} break;
+			//STARS-LOOP
+		case 2:
+			 boolean loop1 = true, loop2 = true;;
+				char yes = 'Y';
+				char condition;
+				int x, y;
+				int stars;
+				while (loop2) {
+				System.out.println("ENTER VALUE OF STAR: ");
+				stars = input.nextInt();
+				if (stars < 0) {
+					System.out.println("ERROR!");
+					System.exit(0);
+				}
+				
+				for (x = stars - 1; x >= 0; x--) {
+					for (y = 0; y <= x; y++) {
+						if (x % 2 == 0) {
+							System.out.print("*");
+						}
+					}
+					if (x % 2 == 0) {
+						System.out.println();
+					}
+				}
+				for (x = 0; x < stars; x++) {
+				for	(y = 0; y <= x; y++) {
+						System.out.print("*");
+					}
+				System.out.println("");
+				} 
+		        System.out.println("Do you want to continue?[Y/N]: ");
+		        condition = input.next().charAt(0); 	
+		        switch (condition) {
+		        case 'Y':
+		        	break;
+		        case 'N':	
+		        	System.out.println("END!");
+		        	System.exit(0);
+		        	loop2 = false;
+		        	loop1 = false;
+		        	break;
+		        }
+			} 
+				//ARRAY LOOP
+		case 3: 
+			ArrayList<Integer> numbers = new ArrayList<Integer>();
+			int breaker = 0;
+			int increment = 0;
+			
+			do {
+				try {
+					System.out.print("Enter value only: ");
+					numbers.add(input.nextInt());
+					if (numbers.get(numbers.size() - 1) < 0 ) {
+						numbers.remove(numbers.size() - 1);
+						System.out.println("Value not added it is negative input!!!");
+						increment--;
+					}
+					
+					
+				} catch (InputMismatchException e) { 
+					System.out.println();
+					System.out.println("Invalid Input!");
+					breaker = 1;
+				}
+				increment++;
+			} while (breaker == 0);
+              System.out.println();
+              System.out.println("List of entered input = "+ numbers);
+              System.out.println("Thank you for using!!");
+			  break;
+		}
+		
+	}
+
+}
