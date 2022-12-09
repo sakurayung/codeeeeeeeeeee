@@ -1,0 +1,81 @@
+package gui;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class test4 {
+	//GLOBAL-VARIABLE
+	public static ArrayList<Integer> primeList = new ArrayList<Integer>();
+	public static ArrayList<Integer> compositeList = new ArrayList<Integer>();
+
+	public static int number;
+	public static Scanner input = new Scanner(System.in);
+	
+	public static boolean isPrime = true;
+	public static int increment = 0;
+	
+	
+	
+
+	public static void main(String[] args) { //MAIN CODE
+		System.out.println("PRIME AND COMPOSITE NUMBER");
+		
+		do {
+				System.out.println("\nEnter a number: ");
+				number = input.nextInt();
+				
+				numCheck();
+				increment++;
+				
+				arrayComp();
+			 	
+	     } while (increment < 10);
+		     show_array();
+		     input.close(); 
+		
+		}
+	
+	static void numCheck() {
+		
+		if (number < 1)
+			System.out.println("Number needs to be greater than 1");
+		else if (number == 1)
+			System.out.println("1 is neither Prime nor Composite");
+		else {
+			for (int divisor = 2; divisor <= (number/2); divisor++) {
+				if ( (number % divisor) == 0 ) {
+					isPrime = false;
+					break;
+				}
+			}
+			
+			if(isPrime)
+				System.out.printf("%d is a Prime Number",number);
+			else 
+				System.out.printf("%d is a Composite Number",number);
+		}
+	}
+	
+	static void arrayComp() {
+		
+		if (isPrime) {
+			
+
+			primeList.add(number);
+			
+		} 
+     else {
+			compositeList.add(number);
+			isPrime = true;
+
+		}
+		
+	}
+	static void show_array() { //SORTING-ARRAYLIST
+		System.out.println("\nPrime numbers are: "+primeList);
+		System.out.println("Composite numbers are: "+compositeList);
+		
+	}
+
+}
